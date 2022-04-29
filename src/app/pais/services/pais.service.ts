@@ -11,6 +11,7 @@ export class PaisService {
   
 
   private apiUrl:string = 'https://restcountries.com/v3.1';
+  private apiUrlV2:string = 'https://restcountries.com/v2';
 
   constructor(private http:HttpClient) { }
 
@@ -33,6 +34,13 @@ export class PaisService {
     const url = `${this.apiUrl}/alpha/${id}`;
     
     return this.http.get<Country>( url );
+  }
+
+  buscarRegion(region:string):Observable<Country[]>{
+    const url = `${this.apiUrlV2}/regionalbloc/${region}`;
+    console.log(url);
+    
+    return this.http.get<Country[]>( url );
   }
 
 
